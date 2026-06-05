@@ -1,5 +1,10 @@
 <?php
 
+// TAMBAHKAN INI DI SINI
+if (!defined('LDAP_OPT_PROTOCOL_VERSION')) {
+    define('LDAP_OPT_PROTOCOL_VERSION', 3);
+}
+
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;

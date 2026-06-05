@@ -1,6 +1,11 @@
 #!/usr/bin/env php
 <?php
 
+// BYPASS LDAP CONSTANT ERROR
+if (!defined('LDAP_OPT_PROTOCOL_VERSION')) {
+    define('LDAP_OPT_PROTOCOL_VERSION', 3);
+}
+
 use Illuminate\Foundation\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 

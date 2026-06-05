@@ -35,8 +35,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/NotificationHelper.php"
-        ]
+    "app/Helpers/NotificationHelper.php",
+    "app/helpers_ldap.php"
+]
     },
     "autoload-dev": {
         "psr-4": {

@@ -123,13 +123,13 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login.post') }}">
             @csrf
 
             <input
                 type="text"
                 name="username"
-                placeholder="Username (UID YARSI / Admin)"
+                placeholder="Username"
                 required
                 value="{{ old('username') }}"
             >
@@ -141,10 +141,8 @@
                 required
             >
 
-            <div class="forgot-password" style="text-align: right; margin-bottom: 15px;">
-                <a href="https://www.yarsi.ac.id/ganti-password-akun-yarsi" target="_blank" style="font-size: 0.85rem; color: #198754; text-decoration: none; font-weight: 600;">
-                    Lupa password?
-                </a>
+            <div class="forgot-password">
+                <a href="{{ route('password.request') }}">Lupa password?</a>
             </div>
 
             <button type="submit" class="btn-login">
