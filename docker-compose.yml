@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ehibah-app
+    container_name: e-hibah-yarsi_app_1
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    volumes:
+      - .:/var/www
+    networks:
+      - ehibah-network
+
+  webserver:
+    image: nginx:alpine
+    container_name: e-hibah-yarsi_web_1
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - ehibah-network
+
+  db:
+    image: mysql:8.0
+    container_name: e-hibah-yarsi_db_1
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: e-hibah
+      MYSQL_ROOT_PASSWORD: Della211104
+    volumes:
+      - mysql-db:/var/lib/mysql
+    networks:
+      - ehibah-network
+
+networks:
+  ehibah-network:
+    driver: bridge
+
+volumes:
+  mysql-db:
+    driver: local
